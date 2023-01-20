@@ -1,0 +1,38 @@
+ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1E90FF;
+  }
+  
+  ul li {
+    list-style-type: none;
+    float: left;
+  }
+  
+  ul li a {
+    position: relative;
+    display: block;
+    background-color: #1E90FF;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  ul li a:hover {
+    background-color: #87CEFA;
+  }
+
+  ul li a.active{
+    background-color: #000080;
+  }
+
+  #home-image{
+    width: 100%;
+    height: auto;
+    border-style: solid;
+    border-width: thin;
+    border-color:#C0C0C0;
+    margin-bottom: 2%;
+  }

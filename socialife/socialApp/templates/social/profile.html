@@ -1,0 +1,59 @@
+{% extends 'social/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="card shadow-sm col-md-8 col-sm-12 border-bottom px-5 pt-3">
+            <img src="{{ profile.profile_image.url }}" class="rounded-circle" width="100" height="100" />
+            {% if profile.name %}
+            <h3 class="py-4">{{ profile.name }}</h3>
+            {% else %}
+            <h3 class="py-4">{{ user.username }}</h3>
+            {% endif %}
+
+            {% if profile.location %}
+            <p>{{ profile.location }}</p>
+            {% endif %}
+
+            {% if profile.birthday %}
+            <p>{{ profile.birthday }}</p>
+            {% endif %}
+
+            {% if profile.bio %}
+            <p>{{ profile.bio }}</p>
+            {% endif %}
+
+            <div class="mb-3">
+                <p>Friends: {{ total_friends }}</p>
+                {% if user == request.user %}
+                {% else %}
+                {% if is_a_friend %}
+                <form method="POST" action="{% url 'remove-friend' profile.pk %}">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-danger" type="submit">UnFriend</button>
+                </form>
+                {% else %}
+                <form method="POST" action="{% url 'add-friend' profile.pk %}">
+                    {% csrf_token %}
+                    <button class="btn btn-outline-primary" type="submit">Friend</button>
+                </form>
+            </div>
+            {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    {% for post in posts %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5 col-sm-12 border-bottom">
+            <p><a style="text-decoration: none;" class="text-primary" href="{% url 'profile' post.publisher.profile.pk %}">@{{ post.publisher }}</a> {{ post.created_on }}</p>
+            <div>
+                {% if post.image %}
+                <img id="home-image" src="{{post.image.url}}"/>
+                {% endif %}
+                <p>{{ post.status }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

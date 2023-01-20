@@ -1,0 +1,24 @@
+{% extends "./base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-12">
+            <h1>Login</h1>
+            <p>Please log into your account. Or if not, you can <a href="../register/">Register Here</a>.</p>
+            <form id="login_form" method="post", action="/login/">
+                {% csrf_token %}
+                {{ login_form|crispy }}
+                <!-- Username field -->
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text" class="form-control">
+        
+                <!-- Password field -->
+                <label class="mt-3" for="password">Password</label>
+                <input id="password" name="password" type="password" class="form-control">
+                <div class="d-grid gap-2">
+                    <input class="mt-3 btn btn-primary btn-block" type="submit" value="Login" />
+                </div>
+                </form>
+        </div>
+    </div>
+{% endblock content %}

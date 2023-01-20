@@ -1,0 +1,23 @@
+<div>
+    <ul>
+        <li><a href="/home/">Home</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'profile' request.user.profile.pk %}">Profile</a></li>
+        {% else %}
+        <li><a href="/login/">Profile</a></li>
+        {% endif %}
+        <li><a href="/chat/">Chat</a></li>
+        <li style="float:right; margin-right: 1%;">
+            <form class="d-flex mt-2" method="GET" action="{% url 'search-profile' %}">
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="query" value="{{ request.GET.query }}">
+                    <button style="border:none; background-color: #87CEFA; box-shadow: none;" type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+        </li>
+        {% if user.is_authenticated %}
+        <li style="float:right;margin-right:5px;"><a href="/logout/">Logout</a></li>
+        {% endif %}
+    </ul>
+</div>
