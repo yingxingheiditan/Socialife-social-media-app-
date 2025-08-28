@@ -4,6 +4,7 @@
 - With real time chat (Log in required)
 # URL paths
 <img width="600" height="404" alt="image" src="https://github.com/user-attachments/assets/d2824256-466d-4288-9801-4004ae4a380e" />
+
 # Web Pages
 Landing Page
 <img width="600" height="183" alt="image" src="https://github.com/user-attachments/assets/65cd6e63-6a28-4d46-aa41-58e3dcb58e89" />
